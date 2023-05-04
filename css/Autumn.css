@@ -3,7 +3,7 @@
 /*  Edited By : Watson                                              */
 /********************************************************************/
 
-/* 共通 ------------------------------------------------------------*/
+/* 共�? ------------------------------------------------------------*/
 
 body {
 	font-family	: sans-serif;
@@ -37,7 +37,7 @@ th, td {
 	font-family	: sans-serif;
 	font-size	: 10pt;
 	border-style	: solid;
-	border-color	: #FFA07A
+	border-color	: #FFA07A;
 	border-width	: 1px;
 	white-space	: nowrap;
 }
@@ -85,8 +85,8 @@ option, input:focus {
 }
 /**********************************************************************/
 
-/* TOPページ ---------------------------------------------------------*/
-/* ターン数関係 */
+/* TOPペ�?�ジ ---------------------------------------------------------*/
+/* ターン数関�? */
 h2.Turn {
 	position	: relative;
 	left		: 50%;
@@ -99,7 +99,7 @@ h2.Turn {
 	margin-bottom	: 1em;
 	font-size	: 16pt;
 }
-/* 発見の記録 最近の出来事 */
+/* 発見�?�記録 �?近�?�出来�? */
 #HistoryLog, #RecentlyLog {
 	white-space	: nowrap;
 }
@@ -109,7 +109,7 @@ h1 {
 	position	: relative;
 	top		: 60px;
 	left		: 50px;
-	font-family	: "あくあフォント", sans-serif;
+	font-family	: "あくあフォン�?", sans-serif;
 	font-style	: italic;
 	font-weight	: normal;
 	font-size	: 38pt;
@@ -124,13 +124,13 @@ h1 {
 	border-width	: 0px 0px 5px 0px;
 	width		: 400px;
 }
-/* 大きい文字 */
+/* 大きい�?�? */
 .big {
 	font-size	: 24pt;
 }
 /**********************************************************************/
 
-/* Mapページ ---------------------------------------------------------*/
+/* Mapペ�?�ジ ---------------------------------------------------------*/
 #islandMap, #islandMap table {
 	margin-left	: auto;
 	margin-right	: auto;
@@ -151,7 +151,7 @@ h1 {
 	text-align	: left;
 }
 
-/* ナビゲーション関係 */
+/* ナビゲーション関�? */
 #NaviView{
 	visibility	: hidden;
 	z-index		: 1;
@@ -184,22 +184,22 @@ h1 {
 	font-weight	: bold;
 	color		: #A06040;
 }
-/* 薄くなった島の名前 */
+/* �?くなった島の名前 */
 .islName2 {
 	font-weight	: bold;
 	color		: #808080;
 }
-/* 順位の番号など */
+/* �?位�?�番号など */
 .number {
 	font-weight	: bold;
 	color		: #800000;
 }
-/* 順位表における見だし */
+/* �?位表における見だ�? */
 .head {
 	font-weight	: bold;
 	color		: #800000;
 }
-/* 開発計画名 */
+/* 開発計画�? */
 .command {
 	font-weight	: bold;
 	color		: #D08000;
@@ -209,18 +209,18 @@ h1 {
 	font-weight	: bold;
 	color		: #FF0000;
 }
-/* 観光者通信（観光者） */
+/* 観光�??通信?��観光�???�? */
 .lbbsSS {
 	font-weight	: bold;
 	color		: #0000FF;
 }
-/* 観光者通信（オーナ） */
+/* 観光�??通信?��オーナ�? */
 .lbbsOW {
 	font-weight	: bold;
 	color		: #FF0000;
 }
 
-/* お金 */
+/* お�?? */
 .money {
 	font-weight	: bold;
 	color		: goldenrod;
@@ -230,7 +230,7 @@ h1 {
 	font-weight	: bold;
 	color		: #8B4513;
 }
-/* 注意 */
+/* 注�? */
 .attention {
 	font-weight	: bold;
 	color		: #FF0000;
@@ -240,12 +240,12 @@ h1 {
 	font-weight	: bold;
 	color		: #CD853F;
 }
-/* 通常の文字色 */
+/* 通常の�?字色 */
 .normal {
 	font-weight	: bold;
 	color		: #000000;
 }
-/* 新規コメント */
+/* 新規コメン�? */
 .new {
 	color		: #f00;
 	background-color: transparent;
@@ -257,27 +257,27 @@ h1 {
 }
 /**********************************************************************/
 /* 背景色 */
-/* 順位表見出し */
+/* �?位表見�?��? */
 .TitleCell {
 	background-color	: #F4A460;
 }
-/* 順位表順位 */
+/* �?位表�?�? */
 .NumberCell {
 	background-color	: #F4A460;
 }
-/* 順位表島の名前 */
+/* �?位表島の名前 */
 .NameCell {
 	background-color	: #F5DEB3;
 }
-/* 順位表島の情報 */
+/* �?位表島の�?報 */
 .InfoCell {
 	background-color	: #FAEBD7; text-align: right;
 }
-/* 順位表コメント欄 */
+/* �?位表コメント�? */
 .CommentCell {
 	background-color	: #FFFFFF; text-align: left;
 }
-/* 開発計画フォーム */
+/* 開発計画フォー�? */
 .InputCell {
 	background-color	: #FFDAB9;
 }
@@ -289,7 +289,7 @@ h1 {
 .CommandCell {
 	background-color	: #FFFFFF;
 }
-/* Point欄 */
+/* Point�? */
 .PoinCell {
 	background-color	: moccasin;
 }
