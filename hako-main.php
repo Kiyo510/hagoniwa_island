@@ -16,7 +16,7 @@ $init = new Init;
 
 define("READ_LINE", 1024);
 $THIS_FILE =  $init->baseDir . "/hako-main.php";
-$BACK_TO_TOP = "<A HREF=¥"{$THIS_FILE}?¥">{$init->tagBig_}トップへ戻る{$init->_tagBig}</A>";
+$BACK_TO_TOP = "<A HREF=\"" . $THIS_FILE . "?\">" . $init->tagBig_ . "トップへ戻る" . $init->_tagBig . "</A>";
 $ISLAND_TURN; // ターン数
 
 //--------------------------------------------------------------------
@@ -27,7 +27,7 @@ class Hako extends HakoIO {
   
   function readIslands(&$cgi) {
     global $init;
-    
+
     $m = $this->readIslandsFile($cgi);
     $this->islandList = $this->getIslandList($cgi->dataSet['defaultID']);
     if($init->targetIsland == 1) {
@@ -57,7 +57,7 @@ class Hako extends HakoIO {
       } else {
         $s = "";
       }
-      $list .= "<option value=¥"$id¥" $s>${name}島</option>¥n";
+      $list .= "<option value=\"$id\" $s>${name}島</option>\n";
     }
     return $list;
   }
@@ -80,13 +80,13 @@ class Hako extends HakoIO {
       }
     }
     if($max != -1) {
-      $prizeList .= "<img src=¥"prize0.gif¥" alt=¥"$nameList¥" width=¥"16¥" height=¥"16¥"> ";
+      $prizeList .= "<img src=\"prize0.gif\" alt=\"$nameList\" width=\"16\" height=\"16\"> ";
     }
     // 賞
     $f = 1;
     for($k = 1; $k < count($init->prizeName); $k++) {
       if($flags & $f) {
-        $prizeList .= "<img src=¥"prize{$k}.gif¥" alt=¥"{$init->prizeName[$k]}¥" width=¥"16¥" height=¥"16¥"> ";
+        $prizeList .= "<img src=\"prize{$k}.gif\" alt=\"{$init->prizeName[$k]}\" width=\"16\" height=\"16\"> ";
       }
       $f = $f << 1;
     }
@@ -102,7 +102,7 @@ class Hako extends HakoIO {
       $f = $f << 1;
     }
     if($max != -1) {
-      $prizeList .= "<img src=¥"{$init->monsterImage[$max]}¥" alt=¥"{$nameList}¥" width=¥"16¥" height=¥"16¥"> ";
+      $prizeList .= "<img src=\"{$init->monsterImage[$max]}\" alt=\"{$nameList}\" width=\"16\" height=\"16\"> ";
     }
     return $prizeList;
   }
@@ -268,10 +268,10 @@ class Hako extends HakoIO {
     }
 
     if($mode == 1 || $mode == 2) {
-      print "<a href=¥"javascript: void(0);¥" onclick=¥"ps($x,$y)¥">";
-      $naviText = "{$comStr}¥¥n{$naviText}";
+      print "<a href=\"javascript: void(0);\" onclick=\"ps($x,$y)\">";
+      $naviText = "{$comStr}\\n{$naviText}";
     }
-    print "<img src=¥"{$image}¥" width=¥"32¥" height=¥"32¥" alt=¥"{$point} {$naviTitle} {$comStr}¥" onMouseOver=¥"Navi({$naviPos},'{$image}', '{$naviTitle}', '{$point}', '{$naviText}', {$naviExp});¥" onMouseOut=¥"NaviClose(); return false¥">";
+    print "<img src=\"{$image}\" width=\"32\" height=\"32\" alt=\"{$point} {$naviTitle} {$comStr}\" onMouseOver=\"Navi({$naviPos},'{$image}', '{$naviTitle}', '{$point}', '{$naviText}', {$naviExp});\" onMouseOut=\"NaviClose(); return false\">";
 
     // 座標設定閉じ
     if($mode == 1 || $mode == 2)
@@ -414,10 +414,10 @@ class HakoIO {
 
     $fp = fopen($fileName, "w");
     Util::lock($fp);
-    fputs($fp, $this->islandTurn . "¥n");
-    fputs($fp, $this->islandLastTime . "¥n");
-    fputs($fp, $this->islandNumber . "¥n");
-    fputs($fp, $this->islandNextID . "¥n");
+    fputs($fp, $this->islandTurn . "\n");
+    fputs($fp, $this->islandLastTime . "\n");
+    fputs($fp, $this->islandNumber . "\n");
+    fputs($fp, $this->islandNextID . "\n");
     for($i = 0; $i < $this->islandNumber; $i++) {
       $this->writeIsland($fp, $num, $this->islands[$i]);
     }
@@ -430,19 +430,19 @@ class HakoIO {
   //---------------------------------------------------
   function writeIsland($fp, $num, $island) {
     global $init;
-    fputs($fp, $island['name'] . "," . $island['owner'] . "," . $island['monster'] . "¥n");
-    fputs($fp, $island['id'] . "¥n");
-    fputs($fp, $island['prize'] . "¥n");
-    fputs($fp, $island['absent'] . "¥n");
-    fputs($fp, $island['comment'] . "," . $island['comment_turn'] . "¥n");
-    fputs($fp, $island['password'] . "¥n");
-    fputs($fp, $island['money'] . "¥n");
-    fputs($fp, $island['food'] . "¥n");
-    fputs($fp, $island['pop'] . "¥n");
-    fputs($fp, $island['area'] . "¥n");
-    fputs($fp, $island['farm'] . "¥n");
-    fputs($fp, $island['factory'] . "¥n");
-    fputs($fp, $island['mountain'] . "¥n");
+    fputs($fp, $island['name'] . "," . $island['owner'] . "," . $island['monster'] . "\n");
+    fputs($fp, $island['id'] . "\n");
+    fputs($fp, $island['prize'] . "\n");
+    fputs($fp, $island['absent'] . "\n");
+    fputs($fp, $island['comment'] . "," . $island['comment_turn'] . "\n");
+    fputs($fp, $island['password'] . "\n");
+    fputs($fp, $island['money'] . "\n");
+    fputs($fp, $island['food'] . "\n");
+    fputs($fp, $island['pop'] . "\n");
+    fputs($fp, $island['area'] . "\n");
+    fputs($fp, $island['farm'] . "\n");
+    fputs($fp, $island['factory'] . "\n");
+    fputs($fp, $island['mountain'] . "\n");
     // 地形
     if(($num <= -1) || ($num == $island['id'])) {
       $fileName = "{$init->dirName}/island.{$island['id']}";
@@ -460,13 +460,13 @@ class HakoIO {
           $l = sprintf("%02x%02x", $land[$x][$y], $landValue[$x][$y]);
           fputs($fp_i, $l);
         }
-        fputs($fp_i, "¥n");
+        fputs($fp_i, "\n");
       }
 
       // コマンド
       $command = $island['command'];
       for($i = 0; $i < $init->commandMax; $i++) {
-        $com = sprintf("%d,%d,%d,%d,%d¥n",
+        $com = sprintf("%d,%d,%d,%d,%d\n",
                      $command[$i]['kind'],
                      $command[$i]['target'],
                      $command[$i]['x'],
@@ -479,7 +479,7 @@ class HakoIO {
       // ローカル掲示板
       $lbbs = $island['lbbs'];
       for($i = 0; $i < $init->lbbsMax; $i++) {
-        fputs($fp_i, $lbbs[$i] . "¥n");
+        fputs($fp_i, $lbbs[$i] . "\n");
       }
       Util::unlock($fp_i);
       fclose($fp_i);
@@ -578,7 +578,7 @@ class LogIO {
           continue;
         }
       }
-      print "{$init->tagNumber_}ターン{$turn}{$m}{$init->_tagNumber}：{$message}<br>¥n";
+      print "{$init->tagNumber_}ターン{$turn}{$m}{$init->_tagNumber}：{$message}<br>\n";
     }
     fclose($fp);
   }
@@ -600,7 +600,7 @@ class LogIO {
     }
     for($i = 0; $i < $k; $i++) {
       list($turn, $his) = split(",", array_pop($history), 2);
-      print "{$init->tagNumber_}ターン{$turn}{$init->_tagNumber}：$his<br>¥n";
+      print "{$init->tagNumber_}ターン{$turn}{$init->_tagNumber}：$his<br>\n";
     }
   }
   //---------------------------------------------------
@@ -615,7 +615,7 @@ class LogIO {
 
     $fp = fopen($fileName, "a");
     Util::lock($fp);
-    fputs($fp, "{$GLOBALS['ISLAND_TURN']},{$str}¥n");
+    fputs($fp, "{$GLOBALS['ISLAND_TURN']},{$str}\n");
     Util::unlock($fp);
     fclose($fp);
 //    chmod($fileName, 0666);
@@ -644,7 +644,7 @@ class LogIO {
         $fp = fopen($fileName, "w");
         Util::lock($fp);
         for($i = ($count - $init->historyMax); $i < $count; $i++) {
-          fputs($fp, "{$line[$i]}¥n");
+          fputs($fp, "{$line[$i]}\n");
         }
         Util::unlock($fp);
         fclose($fp);
@@ -686,17 +686,17 @@ class LogIO {
     // 全部逆順にして書き出す
     if(!empty($this->secretLogPool)) {
       for($i = count($this->secretLogPool) - 1; $i >= 0; $i--) {
-        fputs($fp, "{$this->secretLogPool[$i]}¥n");
+        fputs($fp, "{$this->secretLogPool[$i]}\n");
       }
     }
     if(!empty($this->lateLogPool)) {
       for($i = count($this->lateLogPool) - 1; $i >= 0; $i--) {
-        fputs($fp, "{$this->lateLogPool[$i]}¥n");
+        fputs($fp, "{$this->lateLogPool[$i]}\n");
       }
     }
     if(!empty($this->logPool)) {
       for($i = count($this->logPool) - 1; $i >= 0; $i--) {
-        fputs($fp, "{$this->logPool[$i]}¥n");
+        fputs($fp, "{$this->logPool[$i]}\n");
       }
     }
     Util::unlock($fp);
@@ -1006,17 +1006,17 @@ class Cgi {
     $ms = gmdate("D, d M Y G:i:s", $time) . " GMT";
     if($modsince == $ms)
       // RFC 822
-      header ("HTTP/1.1 304 Not Modified¥n");
+      header ("HTTP/1.1 304 Not Modified\n");
 
     $ms = gmdate("l, d-M-y G:i:s", $time) . " GMT";
     if($modsince == $ms)
       // RFC 850
-      header ("HTTP/1.1 304 Not Modified¥n");
+      header ("HTTP/1.1 304 Not Modified\n");
 
     $ms = gmdate("D M j G:i:s Y", $time);
     if($modsince == $ms)
       // ANSI C's asctime() format
-      header ("HTTP/1.1 304 Not Modified¥n");
+      header ("HTTP/1.1 304 Not Modified\n");
   }
   //---------------------------------------------------
   // COOKIEを取得

@@ -60,13 +60,13 @@ function AutoDetect(&$str)
 	//4:UTF-8
 	//5:Unknown
 
-	if (!ereg("[¥x80-¥xFF]", $str)) {
+	if (!ereg("[\x80-\xFF]", $str)) {
 		// --- Check ISO-2022-JP ---
-		if (ereg("¥x1B", $str)) return 3; // ISO-2022-JP(JIS)
+		if (ereg("\x1B", $str)) return 3; // ISO-2022-JP(JIS)
 		return 0; //US-ASCII
 	}
 
-	$b = unpack('C*', ereg_replace("^[^¥x80-¥xFF]+", "", $str));
+	$b = unpack('C*', ereg_replace("^[^\x80-\xFF]+", "", $str));
 	$n = count($b);
 
 	// --- Check EUC-JP ---
@@ -1256,7 +1256,7 @@ function jstr_replace($before, $after, $str)
     jchunk_split() - This function is similar to chunk_split() 
     and is designed for euc-jp encoding.
 */
-function jchunk_split($str, $width = 76, $end = "¥r¥n")
+function jchunk_split($str, $width = 76, $end = "\r\n")
 {
 	if ($width < 1) return '';
 

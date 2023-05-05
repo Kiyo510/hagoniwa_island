@@ -16,13 +16,13 @@ class Init {
   // 各種設定値
   //----------------------------------------
   // プログラムを置くディレクトリ
-  var $baseDir		= "http://127.0.0.1/hako_php";
+  var $baseDir		= "http://127.0.0.1/";
 
   // 画像を置くディレクトリ
-  var $imgDir		= "http://127.0.0.1/hako_image";
+  var $imgDir		= "http://127.0.0.1/hagoniwa_img";
 
   // CSSファイルを置くディレクトリ
-  var $cssDir		= "http://127.0.0.1/hako_php/css";
+  var $cssDir		= "http://127.0.0.1/css";
 
   // CSSリスト
   var $cssList		= array('SkyBlue.css', 'Autumn.css');
@@ -63,7 +63,7 @@ class Init {
   // バックアップを何ターンおきに取るか
   var $backupTurn	= 12;
   // バックアップを何回分残すか
-  var $backupTimes	= 4;
+  var $backupTimes	= 0;
 
   // 発見ログ保持行数
   var $historyMax	= 10;
@@ -372,7 +372,7 @@ class Init {
   var $ax = array(0, 1, 1, 1, 0,-1, 0, 1, 2, 2, 2, 1, 0,-1,-1,-2,-1,-1, 0);
   var $ay = array(0,-1, 0, 1, 1, 0,-1,-2,-1, 0, 1, 2, 2, 2, 1, 0,-1,-2,-2);
 
-  // コメントなどに、予¥定のように¥が勝手に追加される
+  // コメントなどに、予\定のように\が勝手に追加される
   var $stripslashes;
 
   function setVariable() {
@@ -474,7 +474,7 @@ class Init {
     // 海外のサーバに設置する場合は次の行にある//をはずす。
     // putenv("TZ=JST-9");
 
-    // 予¥定のように¥が勝手に追加される
+    // 予\定のように\が勝手に追加される
     $this->stripslashes	= get_magic_quotes_gpc();
   }
 }
