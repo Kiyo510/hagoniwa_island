@@ -26,7 +26,7 @@ class Make {
       return;
     }
     // 名前が正当化チェック
-    if(ereg("[,¥?¥(¥)¥<¥>¥$]", $data['ISLANDNAME']) || strcmp($data['ISLANDNAME'], "無人") == 0) {
+    if(ereg("[,\?\(\)\<\>\$]", $data['ISLANDNAME']) || strcmp($data['ISLANDNAME'], "無人") == 0) {
       Error::newIslandBadName();
       return;
     }
@@ -344,7 +344,7 @@ class Make {
     if(!empty($data['ISLANDNAME'])) {
       // 名前変更の場合
       // 名前が正当かチェック
-      if(ereg("[,¥?¥(¥)¥<¥>¥$]", $data['ISLANDNAME']) || strcmp($data['ISLANDNAME'], "無人") == 0) {
+      if(ereg("[,\?\(\)\<\>\$]", $data['ISLANDNAME']) || strcmp($data['ISLANDNAME'], "無人") == 0) {
         Error::newIslandBadName();
         return;
       }
@@ -666,7 +666,7 @@ class Turn {
 
     $comArray = &$island['command'];
     $command  = $comArray[0];
-    Util::slideFront(&$comArray, 0);
+    Util::slideFront($comArray, 0);
     $island['command'] = $comArray;
     
     $kind   = $command['kind'];
@@ -1070,7 +1070,7 @@ class Turn {
       $island['money'] -= $cost;
       if($arg > 1) {
         $arg--;
-        Util::slideBack(&$comArray, 0);
+        Util::slideBack($comArray, 0);
         $comArray[0] = array (
           'kind'   => $kind,
           'target' => $target,
@@ -1714,7 +1714,7 @@ class Turn {
           $this->log->bombFire($id, $name, $lName, "($x, $y)");
 
           // 広域被害ルーチン
-          $this->wideDamage($id, $name, &$land, &$landValue, $x, $y);
+          $this->wideDamage($id, $name, $land, $landValue, $x, $y);
         }
         break;
         
@@ -1817,7 +1817,7 @@ class Turn {
           $this->log->monsMoveDefence($id, $name, $lName, $point, $mName);
 
           // 広域被害ルーチン
-          $this->wideDamage($id, $name, &$land, &$landValue, $sx, $sy);
+          $this->wideDamage($id, $name, $land, $landValue, $sx, $sy);
         } else {
           // 行き先が荒地になる
           $this->log->monsMove($id, $name, $lName, $point, $mName);
@@ -2085,7 +2085,7 @@ class Turn {
       $this->log->hugeMeteo($id, $name, $point);
 
       // 広域被害ルーチン
-      $this->wideDamage($id, $name, &$land, &$landValue, $x, $y);
+      $this->wideDamage($id, $name, $land, $landValue, $x, $y);
     }
 
     // 巨大ミサイル判定
@@ -2103,7 +2103,7 @@ class Turn {
       $this->log->monDamage($id, $name, $point);
 
       // 広域被害ルーチン
-      $this->wideDamage($id, $name, &$land, &$landValue, $x, $y);
+      $this->wideDamage($id, $name, $land, $landValue, $x, $y);
     }
 
     // 隕石判定
