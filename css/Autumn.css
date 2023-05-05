@@ -1,295 +1,295 @@
-@charset "Shift_JIS";
+@charset "UTF-8";
 /********************************************************************/
 /*  Edited By : Watson                                              */
 /********************************************************************/
 
-/* 共�? ------------------------------------------------------------*/
+/* 共通 ------------------------------------------------------------*/
 
 body {
-	font-family	: sans-serif;
-	color		: #8B0000;
-	background	: #FFF url('atm/atm_background.png') no-repeat;
-	font-size	: 10pt;
+    font-family	: sans-serif;
+    color		: #8B0000;
+    background	: #FFF url('atm/atm_background.png') no-repeat;
+    font-size	: 10pt;
 }
 a {
-	color		: #CD5C5C;
-	text-decoration	: none;
+    color		: #CD5C5C;
+    text-decoration	: none;
 }
 a:visited {
-	color		: #DEB887;
+    color		: #DEB887;
 }
 a:active {
-	color		: #F08080;
+    color		: #F08080;
 }
 a:hover {
-	color		: #F08080;
-	background-color: #FFDAB9;
+    color		: #F08080;
+    background-color: #FFDAB9;
 }
 hr {
-	border-style	: solid;
-	border-color	: #A0522D;
-	border-width	: 1px 0px 0px 0px;
+    border-style	: solid;
+    border-color	: #A0522D;
+    border-width	: 1px 0px 0px 0px;
 }
 table {
-	border		: none;
+    border		: none;
 }
 th, td {
-	font-family	: sans-serif;
-	font-size	: 10pt;
-	border-style	: solid;
-	border-color	: #FFA07A;
-	border-width	: 1px;
-	white-space	: nowrap;
+    font-family	: sans-serif;
+    font-size	: 10pt;
+    border-style	: solid;
+    border-color	: #FFA07A;
+    border-width	: 1px;
+    white-space	: nowrap;
 }
 th {
-	border-color	: #A0522D;
+    border-color	: #A0522D;
 }
 img {
-	border		: none;
+    border		: none;
 }
 #islandInfo .big,
 #CommentBox .big,
 #localBBS .big,
 #RecentlyLog .big,
 h2 {
-	display		: block;
-	text-align	: left;
-	text-transform	: uppercase;
-	background-image: url('atm/atm_mmji.gif');
-	background-repeat: no-repeat;
-	background-position: 0% 0%;
-	padding-left	: 25px;
-	font-size	: 14pt;
-	font-weight	: bold;
-	color		: #CD5C5C;
-	border		: solid #8B4513;
-	border-width	: 0px 0px 2px 0px;
-	width		: 300px;
+    display		: block;
+    text-align	: left;
+    text-transform	: uppercase;
+    background-image: url('atm/atm_mmji.gif');
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+    padding-left	: 25px;
+    font-size	: 14pt;
+    font-weight	: bold;
+    color		: #CD5C5C;
+    border		: solid #8B4513;
+    border-width	: 0px 0px 2px 0px;
+    width		: 300px;
 }
 h2.lastModified{
-	font-size	: 90%;
-	background-image: none;
-	width		: 100%;
-	padding		: 0px;
+    font-size	: 90%;
+    background-image: none;
+    width		: 100%;
+    padding		: 0px;
 }
 
 option, input:focus {
-	background-color: #FFE4C4;
+    background-color: #FFE4C4;
 }
 #LinkFoot {
-	background-color: #FFF5EE;
-	border		: dashed #F5DEB3 1px;
-	width		: 50%;
-	margin-left	: 25%;
-	padding		: 5px;
+    background-color: #FFF5EE;
+    border		: dashed #F5DEB3 1px;
+    width		: 50%;
+    margin-left	: 25%;
+    padding		: 5px;
 }
 /**********************************************************************/
 
-/* TOPペ�?�ジ ---------------------------------------------------------*/
-/* ターン数関�? */
+/* TOPページ ---------------------------------------------------------*/
+/* ターン数関係 */
 h2.Turn {
-	position	: relative;
-	left		: 50%;
-	background-image: url('atm/atm_icyo.gif');
-	background-repeat: no-repeat;
-	background-position: 99% 10%;
-	height		: 50px;
-	border		: dashed #F5DEB3 1px;
-	width		: 45%;
-	margin-bottom	: 1em;
-	font-size	: 16pt;
+    position	: relative;
+    left		: 50%;
+    background-image: url('atm/atm_icyo.gif');
+    background-repeat: no-repeat;
+    background-position: 99% 10%;
+    height		: 50px;
+    border		: dashed #F5DEB3 1px;
+    width		: 45%;
+    margin-bottom	: 1em;
+    font-size	: 16pt;
 }
-/* 発見�?�記録 �?近�?�出来�? */
+/* 発見の記録 最近の出来事 */
 #HistoryLog, #RecentlyLog {
-	white-space	: nowrap;
+    white-space	: nowrap;
 }
 
 /* タイトル */
 h1 {
-	position	: relative;
-	top		: 60px;
-	left		: 50px;
-	font-family	: "あくあフォン�?", sans-serif;
-	font-style	: italic;
-	font-weight	: normal;
-	font-size	: 38pt;
-	color		: #8B0000;
-	background-color: transparent;
-	background-image: url('atm/atm_bg_title.gif');
-	background-repeat: no-repeat;
-	background-position: 96% 50%;
-	margin-bottom	: 80px;
-	border-style	: double;
-	border-color	: #CD853F;
-	border-width	: 0px 0px 5px 0px;
-	width		: 400px;
+    position	: relative;
+    top		: 60px;
+    left		: 50px;
+    font-family	: "あくあフォント", sans-serif;
+    font-style	: italic;
+    font-weight	: normal;
+    font-size	: 38pt;
+    color		: #8B0000;
+    background-color: transparent;
+    background-image: url('atm/atm_bg_title.gif');
+    background-repeat: no-repeat;
+    background-position: 96% 50%;
+    margin-bottom	: 80px;
+    border-style	: double;
+    border-color	: #CD853F;
+    border-width	: 0px 0px 5px 0px;
+    width		: 400px;
 }
-/* 大きい�?�? */
+/* 大きい文字 */
 .big {
-	font-size	: 24pt;
+    font-size	: 24pt;
 }
 /**********************************************************************/
 
-/* Mapペ�?�ジ ---------------------------------------------------------*/
+/* Mapページ ---------------------------------------------------------*/
 #islandMap, #islandMap table {
-	margin-left	: auto;
-	margin-right	: auto;
+    margin-left	: auto;
+    margin-right	: auto;
 }
 #islandInfo table,
 #CommentBox table,
 #localBBS table
 {
-	width		: 100%;
+    width		: 100%;
 }
 #islandInfo th,
 #CommentBox th,
 #localBBS th
 {
-	background-color: #FFA07A;
+    background-color: #FFA07A;
 }
 #localBBS center {
-	text-align	: left;
+    text-align	: left;
 }
 
-/* ナビゲーション関�? */
+/* ナビゲーション関係 */
 #NaviView{
-	visibility	: hidden;
-	z-index		: 1;
-	position	: absolute;
-	text-align	: left;
-	margin-top 	: -224px;
-	padding		: 3px;
-	background-color: #F0FFFF;
-	border-style	: groove;
-	border-color	: #4169E1;
-	border-width	: 3px;
-	width		: 140px;
+    visibility	: hidden;
+    z-index		: 1;
+    position	: absolute;
+    text-align	: left;
+    margin-top 	: -224px;
+    padding		: 3px;
+    background-color: #F0FFFF;
+    border-style	: groove;
+    border-color	: #4169E1;
+    border-width	: 3px;
+    width		: 140px;
 }
 .NaviTitle {
-	font-size	: 12pt;
-	border-style	: solid;
-	border-color	: #000080;
-	border-width	: 0 0 2px 0;
+    font-size	: 12pt;
+    border-style	: solid;
+    border-color	: #000080;
+    border-width	: 0 0 2px 0;
 }
 .NaviImg {
-	margin		: 5px;
+    margin		: 5px;
 }
 .NaviText {
-	margin-left	: 15px;
+    margin-left	: 15px;
 }
 
 
 /* 島の名前など */
 .islName {
-	font-weight	: bold;
-	color		: #A06040;
+    font-weight	: bold;
+    color		: #A06040;
 }
-/* �?くなった島の名前 */
+/* 薄くなった島の名前 */
 .islName2 {
-	font-weight	: bold;
-	color		: #808080;
+    font-weight	: bold;
+    color		: #808080;
 }
-/* �?位�?�番号など */
+/* 順位の番号など */
 .number {
-	font-weight	: bold;
-	color		: #800000;
+    font-weight	: bold;
+    color		: #800000;
 }
-/* �?位表における見だ�? */
+/* 順位表における見だし */
 .head {
-	font-weight	: bold;
-	color		: #800000;
+    font-weight	: bold;
+    color		: #800000;
 }
-/* 開発計画�? */
+/* 開発計画名 */
 .command {
-	font-weight	: bold;
-	color		: #D08000;
+    font-weight	: bold;
+    color		: #D08000;
 }
 /* 災害 */
 .disaster {
-	font-weight	: bold;
-	color		: #FF0000;
+    font-weight	: bold;
+    color		: #FF0000;
 }
-/* 観光�??通信?��観光�???�? */
+/* 観光者通信（観光者） */
 .lbbsSS {
-	font-weight	: bold;
-	color		: #0000FF;
+    font-weight	: bold;
+    color		: #0000FF;
 }
-/* 観光�??通信?��オーナ�? */
+/* 観光者通信（オーナ） */
 .lbbsOW {
-	font-weight	: bold;
-	color		: #FF0000;
+    font-weight	: bold;
+    color		: #FF0000;
 }
 
-/* お�?? */
+/* お金 */
 .money {
-	font-weight	: bold;
-	color		: goldenrod;
+    font-weight	: bold;
+    color		: goldenrod;
 }
 /* 食料 */
 .food {
-	font-weight	: bold;
-	color		: #8B4513;
+    font-weight	: bold;
+    color		: #8B4513;
 }
-/* 注�? */
+/* 注意 */
 .attention {
-	font-weight	: bold;
-	color		: #FF0000;
+    font-weight	: bold;
+    color		: #FF0000;
 }
 /* point */
 .point {
-	font-weight	: bold;
-	color		: #CD853F;
+    font-weight	: bold;
+    color		: #CD853F;
 }
-/* 通常の�?字色 */
+/* 通常の文字色 */
 .normal {
-	font-weight	: bold;
-	color		: #000000;
+    font-weight	: bold;
+    color		: #000000;
 }
-/* 新規コメン�? */
+/* 新規コメント */
 .new {
-	color		: #f00;
-	background-color: transparent;
+    color		: #f00;
+    background-color: transparent;
 }
 /* 怪獣出没数 */
 .monster{
-	font-size	: 8pt;
-	color		: #f00;
+    font-size	: 8pt;
+    color		: #f00;
 }
 /**********************************************************************/
 /* 背景色 */
-/* �?位表見�?��? */
+/* 順位表見出し */
 .TitleCell {
-	background-color	: #F4A460;
+    background-color	: #F4A460;
 }
-/* �?位表�?�? */
+/* 順位表順位 */
 .NumberCell {
-	background-color	: #F4A460;
+    background-color	: #F4A460;
 }
-/* �?位表島の名前 */
+/* 順位表島の名前 */
 .NameCell {
-	background-color	: #F5DEB3;
+    background-color	: #F5DEB3;
 }
-/* �?位表島の�?報 */
+/* 順位表島の情報 */
 .InfoCell {
-	background-color	: #FAEBD7; text-align: right;
+    background-color	: #FAEBD7; text-align: right;
 }
-/* �?位表コメント�? */
+/* 順位表コメント欄 */
 .CommentCell {
-	background-color	: #FFFFFF; text-align: left;
+    background-color	: #FFFFFF; text-align: left;
 }
-/* 開発計画フォー�? */
+/* 開発計画フォーム */
 .InputCell {
-	background-color	: #FFDAB9;
+    background-color	: #FFDAB9;
 }
 /* 開発計画地図 */
 .MapCell {
-	background-color	: #FFFFFF;
+    background-color	: #FFFFFF;
 }
 /* 開発計画入力済み計画 */
 .CommandCell {
-	background-color	: #FFFFFF;
+    background-color	: #FFFFFF;
 }
-/* Point�? */
+/* Point欄 */
 .PoinCell {
-	background-color	: moccasin;
+    background-color	: moccasin;
 }
