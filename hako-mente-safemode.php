@@ -195,7 +195,7 @@ class Main {
 //        $value = Util::sjis_convert($value);
         // 半角カナがあれば全角に変換して返す
 //        $value = i18n_ja_jp_hantozen($value,"KHV");
-        JcodeConvert($value, 0, 2);
+//        JcodeConvert($value, 0, 2);
         $value = str_replace(",", "", $value);
 
         $this->dataSet["{$name}"] = $value;

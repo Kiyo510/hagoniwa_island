@@ -955,8 +955,8 @@ class Cgi {
         // 半角カナがあれば全角に変換して返す
 //        $value = i18n_ja_jp_hantozen($value,"KHV");
         $value = str_replace(",", "", $value);
-        $value = JcodeConvert($value, 0, 2);
-        $value = HANtoZEN_SJIS($value);
+//        $value = JcodeConvert($value, 0, 2);
+//        $value = HANtoZEN_SJIS($value);
         if($init->stripslashes == true) {
           $this->dataSet["{$name}"] = stripslashes($value);
         } else {

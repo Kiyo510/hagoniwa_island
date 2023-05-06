@@ -34,7 +34,7 @@ class HTML {
 <html lang="ja">
 <head>
 <base href="{$init->imgDir}/">
-<meta http-equiv="Content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <meta http-equiv="Content-Script-Type" content="text/javascript">
 <link rel="stylesheet" type="text/css" href="{$init->cssDir}/{$css}">
@@ -970,7 +970,7 @@ class HtmlJS extends HtmlMap {
 <html lang="ja">
 <head>
 <base href="{$init->imgDir}/">
-<meta http-equiv="Content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <meta http-equiv="Content-Script-Type" content="text/javascript">
 <link rel="stylesheet" type="text/css" href="{$init->cssDir}/{$css}">
