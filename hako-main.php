@@ -8,7 +8,6 @@
 
 *******************************************************************/
 
-require 'jcode.phps';
 require 'config.php';
 require 'hako-html.php';
 require 'hako-turn.php';
@@ -955,8 +954,6 @@ class Cgi {
         // 半角カナがあれば全角に変換して返す
 //        $value = i18n_ja_jp_hantozen($value,"KHV");
         $value = str_replace(",", "", $value);
-        $value = JcodeConvert($value, 0, 2);
-        $value = HANtoZEN_SJIS($value);
         if($init->stripslashes == true) {
           $this->dataSet["{$name}"] = stripslashes($value);
         } else {
@@ -979,9 +976,6 @@ class Cgi {
       // この段階で mode に turn がセットされるのは不正アクセスがある場合のみなのでクリアする
       $this->mode = '';
     }
-    $this->dataSet["ISLANDNAME"] = jsubstr($this->dataSet["ISLANDNAME"], 0, 16);
-    $this->dataSet["MESSAGE"] = jsubstr($this->dataSet["MESSAGE"], 0, 60);
-    $this->dataSet["LBBSMESSAGE"] = jsubstr($this->dataSet["LBBSMESSAGE"], 0, 60);
   }
   function lastModified() {
     global $init;
