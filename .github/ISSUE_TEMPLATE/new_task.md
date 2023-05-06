@@ -1,7 +1,6 @@
 ---
 name: タスク
 about: 新規タスク起票用issueテンプレート
-title: "[タスク]"
 labels: task
 ---
 <!-- GitHub Markdown の書き方は以下を参照してください。
