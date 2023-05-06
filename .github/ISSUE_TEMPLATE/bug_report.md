@@ -1,7 +1,6 @@
 ---
 name: バグ報告
 about: バグ改善のための報告issueテンプレート
-title: "[バグ]"
 labels: bug
 ---
 
