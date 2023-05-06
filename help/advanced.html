@@ -1,0 +1,654 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <TITLE>上級編</TITLE>
+    <LINK rel="stylesheet" href="style.css" type="text/css">
+</HEAD>
+<BODY>
+<HR>
+<DIV><A href="beginner.html">初級編</A> | <A href="intermediate.html">中級編</A> | 上級編</DIV>
+<HR>
+<H2>上級編</H2>
+<BLOCKQUOTE>
+    <TABLE>
+        <TBODY>
+        <TR>
+            <TD align="center">A.</TD>
+            <TD><A href="#A">ターン処理</A></TD>
+        </TR>
+        <TR>
+            <TD align="center">B.</TD>
+            <TD><A href="#B">災害発生率</A></TD>
+        </TR>
+        <TR>
+            <TD align="center">C.</TD>
+            <TD><A href="#C">地形変化一覧</A></TD>
+        </TR>
+        </TBODY>
+    </TABLE>
+</BLOCKQUOTE>
+<HR>
+このページでは、<B>災害発生率</B>など、<B>ルールの詳細</B>について述べます。普通に開発する分には必要ありませんが、綿密な開発計画を立てたい方は御一読ください。
+<BR>
+<BR>
+基本的な事については<A href="beginner.html">初級編</A>や<A href="intermediate.html">中級編</A>でどうぞ。
+<HR>
+<TABLE border="0" cellpadding="2" cellspacing="0" width="100%">
+    <COL span="1" width="10">
+    <TBODY>
+    <TR>
+        <TD><A name="A"><IMG src="../hagoniwa_img/listmark.gif" width="10" height="10" border="0" alt="リストマーク"></A></TD>
+        <TD><B class="title">ターン処理</B></TD>
+    </TR>
+    <TR>
+        <TD colspan="2" bgcolor="#FF6600"><IMG src="../hagoniwa_img/clear.gif" width="1" height="1" border="0"></TD>
+    </TR>
+    </TBODY>
+</TABLE>
+<BLOCKQUOTE>6時間毎に行われるターン処理は、以下の順で行われます。<BR>
+    <BR>
+    <DIV align="center"><B>収入<BR>
+        ↓<BR>
+        食料消費<BR>
+        ↓<BR>
+        開発計画実施<BR>
+        ↓<BR>
+        各ヘックス処理<BR>
+        ↓<BR>
+        全体災害<BR>
+        ↓<BR>
+        ターン終了処理</B></DIV>
+    <BR>
+    <TABLE bgcolor="#FF6600">
+        <TBODY>
+        <TR>
+            <TD>
+                <TABLE width="100%">
+                    <TBODY>
+                    <TR>
+                        <TD align="center" bgcolor="#FFFFFF">収入</TD>
+                        <TD bgcolor="#FFFFFF" valign="top">各島に、人口と工場、農場の数に応じた収入が入ります。</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">食料消費</TD>
+                        <TD bgcolor="#FFFFFF" valign="top">人口に応じた食料が消費されます。</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">開発計画実施</TD>
+                        <TD bgcolor="#FFFFFF" valign="top">各島の開発計画が1つ実行されます。島の順番はランダムです。</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">各ヘックス処理</TD>
+                        <TD bgcolor="#FFFFFF" valign="top">各ヘックスにおける処理が行われます。詳しくは後述。</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">全体災害</TD>
+                        <TD bgcolor="#FFFFFF" valign="top">島全体で起こる災害(怪獣、地震、津波、地盤沈下、台風、隕石、巨大隕石、噴火、食料不足、埋蔵金)
+                            が判定されます。
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD align="center" bgcolor="#FFFFFF">
+                            <NOBR>ターン終了処理</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFFFFF" valign="top">
+                            食料が999900トンを超えていたら、超えた分が自動換金されます。資金が9999億円を超えていたら、超えた分が捨てられます。人口に応じて賞の判定があります。人口が0になっていたら、島の登録が抹消になります。
+                        </TD>
+                    </TR>
+                    </TBODY>
+                </TABLE>
+            </TD>
+        </TR>
+        </TBODY>
+    </TABLE>
+    <BR>
+    最初に<B>収入</B>があって、次に<B>消費</B>、<B>開発</B>なので、収入をあてにした計画を立てておくことが可能です。<BR>
+    <BR>
+    <B>開発</B>の行われる島の順番は、ターン毎にランダムに決定されます。また、資金不足等、なんらかの理由で計画が実行できなかった場合は、繰り上げで次の計画が実行されます。
+    <H3>各ヘックス処理</H3>
+    各ヘックス処理において処理されるヘックスの順番は、ターン毎にランダムです。ヘックス毎に、以下のような処理が行われます。
+    <H5>村、町、都市</H5>
+    人口が増えます(食料不足の時は逆に減ります)。<BR>
+    <BR>
+    <TABLE bgcolor="#FF6600">
+        <TBODY>
+        <TR>
+            <TD>
+                <TABLE width="100%">
+                    <TBODY>
+                    <TR>
+                        <TD align="center" bgcolor="#FFCC00">規模</TD>
+                        <TD bgcolor="#FFCC00" align="center">平時</TD>
+                        <TD bgcolor="#FFCC00" align="center">誘致活動時</TD>
+                        <TD bgcolor="#FFCC00" align="center">食料不足時</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">
+                            <NOBR>村・町</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFFFFF" align="center">
+                            <NOBR>100～1000人増加</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFFFFF" align="center">
+                            <NOBR>100～3000人増加</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFFFFF" align="center">
+                            <NOBR>100～3000人減少</NOBR>
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">都市</TD>
+                        <TD bgcolor="#FFFFFF" align="center">増加なし</TD>
+                        <TD bgcolor="#FFFFFF" align="center">100～300人増加</TD>
+                        <TD bgcolor="#FFFFFF" align="center">100～3000人減少</TD>
+                    </TR>
+                    </TBODY>
+                </TABLE>
+            </TD>
+        </TR>
+        </TBODY>
+    </TABLE>
+    <BR>
+    周囲に森のない<B>町</B>、<B>都市</B>の場合は、<B>火災判定</B>もあります(1%で焼失)。
+    <H5>工場、ハリボテ</H5>
+    <B>火災判定</B>があります(1%で焼失)。
+    <H5>平地</H5>
+    周囲に<B>農場</B>、<B>村</B>、<B>町</B>、<B>都市</B>がある場合、<B>村</B>の発生判定が行われます。20%の確率で発生します。
+    <H5>森</H5>
+    木が100本増えます(最大20000本)。
+    <H5>防衛施設</H5>
+    開発計画において自爆がセットされた場合、自爆します。
+    <H5>海底油田</H5>
+    1000億円の収入の後、枯渇判定があります。毎ターン4%の確率で枯渇します。
+    <H5>怪獣移動</H5>
+    怪獣が移動します。移動元のヘックスは荒地になります。もちろん、移動済みの怪獣であれば移動しません(例外として、2ヘックス以上移動する怪獣も存在します)。<BR><BR>
+    移動先のヘックスが防衛施設だった場合、自爆装置が作動します。<BR>
+    <BR>
+    <A href="#Top">▲Top</A></BLOCKQUOTE>
+<TABLE border="0" cellpadding="2" cellspacing="0" width="100%">
+    <COL span="1" width="10">
+    <TBODY>
+    <TR>
+        <TD><A name="B"><IMG src="../hagoniwa_img/listmark.gif" width="10" height="10" border="0" alt="リストマーク"></A></TD>
+        <TD><B class="title">災害発生率</B></TD>
+    </TR>
+    <TR>
+        <TD colspan="2" bgcolor="#FF6600"><IMG src="../hagoniwa_img/clear.gif" width="1" height="1" border="0"></TD>
+    </TR>
+    </TBODY>
+</TABLE>
+<BLOCKQUOTE>
+    <H3>火災</H3>
+    <B>森</B>や<B>記念碑</B>に隣接していない各<B>工場</B>、<B>都市</B>、<B>町</B>、<B>ハリボテ</B>につき、ターン毎に<B>1%</B>の確率で発生します。
+    <H3>台風</H3>
+    各島につき、ターン毎に<B>2%</B>の確率で発生します。<BR>
+    発生すると、各<B>農場</B>、<B>ハリボテ</B>について判定があり、次のような確率で<B>平地</B>になります。<BR>
+    <BR>
+    <B>&lt;平地になる確率&gt;</B> 対象となる<B>農場</B>に隣接する<B>森</B>の数を<B>F</B>とした場合、<BR>
+    <BR>
+    <DIV align="center"><B>(6-F)/12</B></DIV>
+    となります。
+    <H3>津波</H3>
+    各島につき、ターン毎に<B>1.5%</B>の確率で発生します。<BR>
+    発生すると、海に隣接する対象地形ついて判定があり、後述する確率によって荒地になります。<BR>
+    対象となる地形は、<B>農場</B>、<B>工場</B>、<B>村</B>、<B>町</B>、<B>都市</B>、<B>ミサイル基地</B>、<B>防衛施設</B>、<B>ハリボテ</B>です。<BR>
+    <BR>
+    <B>&lt;荒地になる確率&gt;</B> 隣接する<B>海(浅瀬も含む)</B>の数を<B>S</B>とした場合、<BR>
+    <BR>
+    <DIV align="center"><B>(S-1)/12</B></DIV>
+    となります。<BR>
+    <BR>
+    なお、陸地に囲まれていて<B>海</B>というより<B>湖</B>と呼ぶべき場所でも、<B>海</B>として扱われます。特別扱いするのが面倒だからです。また、<B>地図の外も海</B>です。従って、たとえ全ヘックスを<B>埋め立て</B>しても、端の部分は海岸です。もちろん、<B>海底基地</B>や<B>海底油田</B>も<B>海</B>です。
+    <H3>噴火</H3>
+    各島につき、ターン毎に<B>1%</B>の確率で発生します。<BR>
+    地図内のランダムなヘックスで発生し、そのヘックスには山が出来ます。隣接するヘックスは、<B>海</B>なら<B>浅瀬</B>に、<B>浅瀬</B>なら<B>荒地</B>になります。その他の場合も<B>荒地</B>になります。
+    <H3>隕石</H3>
+    各島につき、ターン毎に<B>1.5%</B>の確率で発生します。<BR>
+    地図内のランダムのヘックスに落ち、そのヘックスが<B>海</B>になります。一発落ちると、<B>50%</B>の確率で次が落ちます。落ちると、また<B>50%</B>の確率で次が落ちます。これが落ちなくなるまで繰り返されます。
+    <H3>巨大隕石</H3>
+    各島につき、ターン毎に<B>0.5%</B>の確率で発生します。<BR>
+    地図内のランダムのヘックスに落ち、そのヘックスが<B>海</B>になります。また、隣接するヘックスが<B>浅瀬</B>になります。 2つ離れたヘックスは<B>荒地</B>になります。
+    <H3>地震</H3>
+    各島につき、ターン毎に<B>0.5%</B>の確率で発生します。<BR>
+    <B>地ならし</B>を行ったターンは、<B>1回につき0.5%</B>、確率が上がります。発生すると、各<B>工場</B>、<B>都市</B>について判定があり、それぞれ<B>1/4</B>の確率で<B>荒地</B>になります。
+    <H3>地盤沈下</H3>
+    <B>広さが一定坪数（箱庭諸島毎に設定）を超過している島</B>に限り、ターン毎に<B>3%</B>の確率で発生します。<BR>
+    発生すると、<B>海(浅瀬含む)</B>に隣接している陸地はすべて<B>浅瀬</B>となり、<B>浅瀬</B>はすべて<B>海</B>となります。
+    <H3>怪獣</H3>
+    <B>人口が10万人以上の島</B>に限り、ターン毎に島の面積に比例した確率(100万坪、つまり1ヘックスあたり0.03%)で出現します。
+    <H3>食料不足</H3>
+    食料が足りなかった場合、無条件で発生します。発生すると、各<B>工場</B>、<B>農場</B>、<B>ミサイル基地</B>、<B>防衛施設</B>について判定があり、それぞれ<B>1/4</B>の確率で<B>荒地</B>になります。
+    <H3>埋蔵金</H3>
+    「災害」というわけではないですが、同列に扱います。<BR>
+    各島につき、<B>整地を行うごと</B>に<B>1%</B>の確率で発生します。<BR>
+    <B>地ならし</B>は関係ありません。発生すると、<B>100～1000億</B>の収入があります。<BR>
+    <BR>
+    <A href="#Top">▲Top</A></BLOCKQUOTE>
+<TABLE border="0" cellpadding="2" cellspacing="0" width="100%">
+    <COL span="1" width="10">
+    <TBODY>
+    <TR>
+        <TD><A name="C"><IMG src="../hagoniwa_img/listmark.gif" width="10" height="10" border="0" alt="リストマーク"></A></TD>
+        <TD><B class="title">地形変化一覧</B></TD>
+    </TR>
+    <TR>
+        <TD colspan="2" bgcolor="#FF6600"><IMG src="../hagoniwa_img/clear.gif" width="1" height="1" border="0"></TD>
+    </TR>
+    </TBODY>
+</TABLE>
+<BLOCKQUOTE><B>災害</B>や<B>ミサイル</B>などによる地形の変化です。<BR>
+    <BR>
+    其の壱<BR>
+    <TABLE bgcolor="#FF6600">
+        <TBODY>
+        <TR>
+            <TD>
+                <TABLE width="100%">
+                    <TBODY>
+                    <TR>
+                        <TD align="center" bgcolor="#FFCC00">元の地形</TD>
+                        <TD bgcolor="#FFCC00" align="center">海</TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>浅瀬</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>荒地</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>平地</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFCC00" align="center">村</TD>
+                        <TD bgcolor="#FFCC00" align="center">町</TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>都市</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFCC00" align="center">森</TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>農場</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>工場</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>ミサイル基地</NOBR>
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">通常ミサイル</TD>
+                        <TD bgcolor="#FFFFFF" valign="top" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">
+                            <NOBR>荒地</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFFFFF" align="center">
+                            <NOBR>荒地</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">
+                            <NOBR>荒地</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">陸地破壊弾</TD>
+                        <TD bgcolor="#FFFFFF" valign="top" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">火災</TD>
+                        <TD bgcolor="#FFFFFF" valign="top" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">地震</TD>
+                        <TD bgcolor="#FFFFFF" valign="top" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                    </TR>
+                    <TR>
+                        <TD align="center" bgcolor="#FFFFFF">津波</TD>
+                        <TD bgcolor="#FFFFFF" valign="top" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">台風</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">平地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">隕石</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">噴火(爆心)</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">噴火(周囲1ヘックス)</TD>
+                        <TD bgcolor="#FFFFFF" align="center">
+                            <NOBR>浅瀬</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">広域被害(爆心)*2</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">広域被害(周囲1ヘックス)</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">
+                            <NOBR>広域被害(周囲2ヘックス)</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">食料不足*3</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    </TBODY>
+                </TABLE>
+            </TD>
+        </TR>
+        </TBODY>
+    </TABLE>
+    <BR>
+    其の弐<BR>
+    <TABLE bgcolor="#FF6600">
+        <TBODY>
+        <TR>
+            <TD>
+                <TABLE width="100%">
+                    <TBODY>
+                    <TR>
+                        <TD align="center" bgcolor="#FFCC00">元の地形</TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>防衛施設</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFCC00" align="center">山</TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>怪獣</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>海底基地</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>海底油田</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>記念碑</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFCC00" align="center">
+                            <NOBR>ハリボテ</NOBR>
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">通常ミサイル</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">体力1減</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">陸地破壊弾</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">
+                            <NOBR>荒地</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">火災</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">地震</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    <TR>
+                        <TD align="center" bgcolor="#FFFFFF">津波</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">台風</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">隕石</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">噴火(爆心)</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山*1</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                        <TD bgcolor="#FFFFFF" align="center">山</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">噴火(周囲1ヘックス)</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">広域被害(爆心)*2</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">広域被害(周囲1ヘックス)</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">海</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                        <TD bgcolor="#FFFFFF" align="center">浅瀬</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">
+                            <NOBR>広域被害(周囲2ヘックス)</NOBR>
+                        </TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                    </TR>
+                    <TR>
+                        <TD bgcolor="#FFFFFF" align="center">食料不足*3</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">荒地</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                        <TD bgcolor="#FFFFFF" align="center">-</TD>
+                    </TR>
+                    </TBODY>
+                </TABLE>
+            </TD>
+        </TR>
+        </TBODY>
+    </TABLE>
+    <BR>
+    *1山に採掘場があった場合は、破壊されます。<BR>
+    *2広域被害とは、巨大隕石、防衛施設自爆、記念碑の飛来による被害です。<BR>
+    *3食料不足では、地形以外にも人口の減少という被害があります。<BR>
+    <BR>
+    <A href="#Top">▲Top</A></BLOCKQUOTE>
+<P align="center">Copyright&copy; <A href="mailto:tokuoka@taurus.bekkoame.ne.jp">Hiroki Tokuoka.</A><BR>
+    Copyright&copy; 2001 <A href="mailto:e-yk@osaka.interq.or.jp">Yasuyuki Kishida.</A></P>
+</BODY>
+</HTML>
