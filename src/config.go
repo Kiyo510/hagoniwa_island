@@ -1,4 +1,4 @@
-package hagoniwa_island
+package main
 
 import (
 	"fmt"
@@ -608,7 +608,6 @@ func (i *Init) setVariable() {
 		i.comAutoPrepare2: "地ならし自動入力",
 		i.comAutoDelete:   "全計画を白紙撤回",
 	}
-
 	i.comCost = map[int]int{
 		i.comPrepare:  5,
 		i.comPrepare2: 100,
@@ -616,24 +615,24 @@ func (i *Init) setVariable() {
 		i.comDestroy:  200,
 		i.comSellTree: 0,
 
-		i.comPlant:        20,
-		i.comFarm:         300,
-		i.comFactory:      300,
-		i.comMountain:     500,
-		i.comBase:         500,
-		i.comDbase:        1000,
-		i.comSbase:        2000,
+		i.comPlant:        50,
+		i.comFarm:         20,
+		i.comFactory:      100,
+		i.comMountain:     300,
+		i.comBase:         300,
+		i.comDbase:        800,
+		i.comSbase:        8000,
 		i.comMonument:     9999,
-		i.comHaribote:     10,
-		i.comMissileNM:    0,
-		i.comMissilePP:    0,
-		i.comMissileST:    0,
-		i.comMissileLD:    0,
-		i.comSendMonster:  10000,
+		i.comHaribote:     1,
+		i.comMissileNM:    20,
+		i.comMissilePP:    50,
+		i.comMissileST:    50,
+		i.comMissileLD:    50,
+		i.comSendMonster:  3000,
 		i.comDoNothing:    0,
-		i.comSell:         0,
-		i.comMoney:        0,
-		i.comFood:         0,
+		i.comSell:         100,
+		i.comMoney:        100,
+		i.comFood:         -100,
 		i.comPropaganda:   1000,
 		i.comGiveup:       0,
 		i.comAutoPrepare:  0,
